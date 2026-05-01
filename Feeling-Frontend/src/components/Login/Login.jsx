@@ -60,14 +60,19 @@ export default function Login() {
           ×
         </button>
 
-        <h2 className="text-xl lg:text-2xl font-semibold mb-2">Login to your account</h2>
+        <h2 className="text-xl lg:text-2xl font-semibold mb-2">
+          Login to your account
+        </h2>
         <p className="text-sm lg:text-lg text-gray-400 mb-4">
           Enter your email and password to login.
         </p>
 
         <div className="space-y-4">
           <div>
-            <label htmlFor="email" className="block text-sm lg:text-base font-medium mb-1">
+            <label
+              htmlFor="email"
+              className="block text-sm lg:text-base font-medium mb-1"
+            >
               Email
             </label>
             <input
@@ -107,29 +112,31 @@ export default function Login() {
             {isLoggingIn ? "Logging in..." : "Login"}
           </button>
 
-          <GoogleLogin
-            onSuccess={async (res) => {
-              try {
-                await axiosInstance.post("/users/google", {
-                  credential: res.credential,
-                });
+          <div className="flex justify-center w-full">
+            <GoogleLogin
+              onSuccess={async (res) => {
+                try {
+                  await axiosInstance.post("/users/google", {
+                    credential: res.credential,
+                  });
 
-                await useAuthStore.getState().checkAuth();
-                toast.success("Logged in with Google!");
-                navigate("/");
-              } catch (error) {
-                const message =
-                  error.response?.data?.message ||
-                  error.response?.data?.error ||
-                  "Google login failed";
+                  await useAuthStore.getState().checkAuth();
+                  toast.success("Logged in with Google!");
+                  navigate("/");
+                } catch (error) {
+                  const message =
+                    error.response?.data?.message ||
+                    error.response?.data?.error ||
+                    "Google login failed";
 
-                toast.error(message);
-              }
-            }}
-            onError={() => toast.error("Google login failed")}
-            text="continue_with"
-            width="100%"
-          />
+                  toast.error(message);
+                }
+              }}
+              onError={() => toast.error("Google login failed")}
+              text="continue_with"
+              width="100%"
+            />
+          </div>
 
           <div className="text-center">
             <button
