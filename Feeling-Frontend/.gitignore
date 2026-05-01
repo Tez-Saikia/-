@@ -29,7 +29,3 @@ dist-ssr
 *.sln
 *.sw?
 
-# Media (important for your case)
-*.mp4
-*.mov
-*.avi
