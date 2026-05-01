@@ -9,11 +9,17 @@ dotenv.config({ path: "./.env" });
 
 const log = debug("development:server");
 const PORT = process.env.PORT || 3000;
+
 const server = http.createServer(app);
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://feelingphotography.vercel.app",
+];
 
 const io = new SocketIOServer(server, {
   cors: {
-    origin: process.env.CORS_ORIGIN,
+    origin: allowedOrigins,
     methods: ["GET", "POST"],
     credentials: true,
   },

@@ -22,6 +22,7 @@ const getCookieOptions = () => {
     secure: isProd,
     sameSite: isProd ? "None" : "Lax",
     path: "/",
+    maxAge: 7 * 24 * 60 * 60 * 1000,
   };
 };
 
@@ -85,21 +86,21 @@ const registerUser = asyncHandler(async (req, res) => {
   );
   if (!createdUser) throw new ApiError(500, "Error while creating user!");
 
-const html = welcomeEmailTemplate({
-  username: createdUser.username,
-  company: process.env.EMAIL_FROM_NAME,
-});
+  const html = welcomeEmailTemplate({
+    username: createdUser.username,
+    company: process.env.EMAIL_FROM_NAME,
+  });
 
-sendEmail({
-  to: createdUser.email,
-  subject: "Welcome 🎉",
-  html,
-}).catch((err) => {
-  console.error("Email failed:", err.message);
-});
-return res
-  .status(201)
-  .json(new APiResponse(200, createdUser, "User created successfully!"));
+  sendEmail({
+    to: createdUser.email,
+    subject: "Welcome 🎉",
+    html,
+  }).catch((err) => {
+    console.error("Email failed:", err.message);
+  });
+  return res
+    .status(201)
+    .json(new APiResponse(200, createdUser, "User created successfully!"));
 });
 
 const loginUser = asyncHandler(async (req, res) => {
@@ -387,8 +388,7 @@ const googleLoginUser = asyncHandler(async (req, res) => {
     audience: process.env.GOOGLE_CLIENT_ID,
   });
 
-  const { sub, email, name, picture, email_verified } =
-    ticket.getPayload();
+  const { sub, email, name, picture, email_verified } = ticket.getPayload();
 
   if (!email_verified) {
     throw new ApiError(400, "Google email is not verified");
@@ -403,7 +403,7 @@ const googleLoginUser = asyncHandler(async (req, res) => {
       if (user.googleId && user.googleId !== sub) {
         throw new ApiError(
           400,
-          "This email is already linked to another Google account."
+          "This email is already linked to another Google account.",
         );
       }
 
@@ -414,11 +414,8 @@ const googleLoginUser = asyncHandler(async (req, res) => {
         await user.save();
       }
     } else {
-      
-
       let baseUsername =
-        name?.toLowerCase().replace(/\s+/g, "") ||
-        email.split("@")[0];
+        name?.toLowerCase().replace(/\s+/g, "") || email.split("@")[0];
 
       let username = baseUsername;
       let counter = 1;
@@ -436,9 +433,7 @@ const googleLoginUser = asyncHandler(async (req, res) => {
       const tempPath = `./public/temp-${Date.now()}.jpg`;
       fs.writeFileSync(tempPath, response.data);
 
-    
       const uploadedAvatar = await uploadOnCloudinary(tempPath);
-
 
       fs.unlinkSync(tempPath);
 
@@ -457,19 +452,15 @@ const googleLoginUser = asyncHandler(async (req, res) => {
     await generateAccessTokenAndRefreshToken(user._id);
 
   const loggedInUser = await User.findById(user._id).select(
-    "-password -refreshToken"
+    "-password -refreshToken",
   );
 
   return res
+    .status(200)
     .cookie("accessToken", accessToken, getCookieOptions())
     .cookie("refreshToken", refreshToken, getCookieOptions())
-    .status(200)
     .json(
-      new APiResponse(
-        200,
-        { user: loggedInUser },
-        "Google login successful"
-      )
+      new APiResponse(200, { user: loggedInUser }, "Google login successful"),
     );
 });
 
