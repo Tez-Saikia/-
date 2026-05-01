@@ -303,7 +303,9 @@ const UserGallery = () => {
         </div>
 
         {/* FILTERS */}
-        <div className="flex flex-wrap gap-4 justify-center pb-12 lg:gap-14">
+        <div className="flex flex-wrap gap-4 justify-center pb-12 lg:gap-14"
+        data-aos="fade-up"
+        >
           <input
             type="text"
             placeholder="Search..."

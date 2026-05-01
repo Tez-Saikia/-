@@ -10,6 +10,7 @@ export default {
       screens: {
         "custom-xsm": "250px",
         "custom-ssm": "320px",
+        "custom-smm": "375px",
         "custom-xxl": "1440px",
       },
       borderRadius: {

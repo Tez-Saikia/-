@@ -82,7 +82,7 @@ function Home() {
   return (
     <>
       {/* Section 1 */}
-      <div className="relative h-screen xl:min-h-screen xl:h-auto w-full overflow-hidden">
+      <div className="relative h-[100vh]   xl:min-h-screen xl:h-auto w-full overflow-hidden">
         {/* Background Image */}
         <img
           src={homeImgs.Img1}
@@ -128,7 +128,7 @@ function Home() {
           </div>
 
           {/* Paragraph */}
-          <div className="absolute custom-xsm:bottom-[3.5rem] sm:bottom-[5rem] w-full flex justify-center lg:hidden">
+          <div className="absolute custom-smm:bottom-[7rem]  custom-xsm:bottom-[6rem] sm:bottom-[5rem] w-full flex justify-center lg:hidden">
             <p className="cinzel text-white text-center text-lg sm:text-xl">
               Welcome to Feeling Photography
             </p>
@@ -223,7 +223,7 @@ function Home() {
       </div>
 
       {/* Section 4 */}
-      <div className="relative w-full custom-xsm:mt-8  custom-xsm:h-[105vh] custom-ssm:h-[100vh] sm:h-[110vh] 2xl:h-[160vh] lg:h-screen h-auto bg-[#A39382] overflow-hidden">
+      <div className="relative w-full custom-xsm:mt-8  custom-xsm:h-[100vh]  sm:h-[110vh] 2xl:h-[160vh] lg:h-screen h-auto bg-[#A39382] overflow-hidden">
         {/* Base Image */}
         <img
           src={homeImgs.Section3_mainImg}
@@ -248,7 +248,7 @@ function Home() {
           {/* Title */}
           <div className="flex items-center justify-center custom-xsm:mt-5 gap-3">
             <div className="border-t-[0.5px] border-white/30 w-[19rem] lg:w-[24rem] xl:w-[39rem]" />
-            <p className="cinzel text-white text-[.7rem] sm:text-[.9rem] tracking-[0.1em] lg:text-[1.7rem] xl:text-[2rem] custom-xxl:text-[2.5rem] whitespace-nowrap">
+            <p className="cinzel text-white text-[1rem] tracking-[0.1em] lg:text-[1.7rem] xl:text-[2rem] custom-xxl:text-[2.5rem] whitespace-nowrap">
               Our Services
             </p>
             <div className="border-t-[0.5px] border-white/30 w-[19rem] lg:w-[24rem] xl:w-[39rem]" />
@@ -259,7 +259,7 @@ function Home() {
             className="flex flex-col lg:flex-row items-center lg:items-start gap-6 lg:gap-16 lg:p-14 h-[28rem] sm:h-[32rem] lg:h-[38rem] xl:h-[45rem] custom-xxl:h-[55rem]"
           >
             <div className="flex items-center justify-center w-full lg:w-[50%] flex-shrink-0">
-              <div className="w-full px-2 custom-ssm:w-[15rem] sm:w-[17rem] lg:w-[33rem] xl:w-[40rem]  aspect-[4/5] overflow-hidden rounded-xl 2xl:mt-20">
+              <div className="w-full px-2 custom-ssm:w-[20rem] sm:w-[17rem] lg:w-[33rem] xl:w-[40rem]  aspect-[4/5] overflow-hidden rounded-xl 2xl:mt-20">
                 <img
                   src={services[currentIndex].image}
                   alt=""
@@ -269,20 +269,20 @@ function Home() {
             </div>
 
             <div className="flex flex-col items-center lg:items-start lg:pt-16 animate-fadeIn h-full justify-center max-w-lg custom-xxl:max-w-[45rem] custom-xsm:overflow-visible overflow-hidden text-center lg:text-left 2xl:mt-16">
-              <h1 className="cinzel text-[#4B4B4B] text-[1.2rem] sm:text-[2rem] lg:text-[3rem] xl:text-[3.8rem] custom-xxl:text-[4.5rem] uppercase">
+              <h1 className="cinzel text-[#4B4B4B] text-[1.7rem] sm:text-[2rem] lg:text-[3rem] xl:text-[3.8rem] custom-xxl:text-[4.5rem] uppercase">
                 {services[currentIndex].title}
               </h1>
 
               <div className="px-3 custom-xsm:mb-4 lg:mt-5">
                 <p
-                  className="cinzel text-[#4B4B4B] custom-xsm:text-[.6rem] sm:text-[.8rem] lg:text-[1rem] text-center lg:text-left xl:text-[1.2rem] custom-xxl:text-[1.5rem] max-w-lg custom-xxl:max-w-[45rem] leading-relaxed 
+                  className="cinzel text-[#4B4B4B] custom-xsm:text-[.74rem] sm:text-[.8rem] lg:text-[1rem] text-center lg:text-left xl:text-[1.2rem] custom-xxl:text-[1.5rem] max-w-lg custom-xxl:max-w-[45rem] leading-relaxed 
                   lg:line-clamp-none"
                 >
                   {services[currentIndex].desc1}
                 </p>
 
                 <p
-                  className="cinzel text-[#4B4B4B] custom-xsm:text-[.6rem] custom-xsm:mt-2 sm:text-[.8rem] lg:mt-3 lg:text-[1rem] text-center lg:text-left xl:text-[1.2rem] custom-xxl:text-[1.5rem] max-w-lg custom-xxl:max-w-[45rem] leading-relaxed 
+                  className="cinzel text-[#4B4B4B] custom-xsm:text-[.74rem] custom-xsm:mt-2 sm:text-[.8rem] lg:mt-3 lg:text-[1rem] text-center lg:text-left xl:text-[1.2rem] custom-xxl:text-[1.5rem] max-w-lg custom-xxl:max-w-[45rem] leading-relaxed 
                    lg:line-clamp-none"
                 >
                   {services[currentIndex].desc2}
