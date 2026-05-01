@@ -3,6 +3,7 @@ import fs from "fs";
 import debug from "debug";
 import dotenv from "dotenv";
 import { ApiError } from "./apiErrors.js";
+import path from "path";
 
 dotenv.config({ path: "./.env" });
 
