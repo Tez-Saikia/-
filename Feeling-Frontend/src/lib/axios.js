@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const API = import.meta.env.VITE_API_URL;
+
 export const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000/api/v1",
+  baseURL: API,
   withCredentials: true,
 });
 
@@ -53,8 +55,8 @@ axiosInstance.interceptors.response.use(
       const isAdminRoute = originalRequest?.url?.startsWith("/admin");
 
       const refreshUrl = isAdminRoute
-        ? "http://localhost:5000/api/v1/admin/refreshToken"
-        : "http://localhost:5000/api/v1/users/refreshToken";
+        ? `${API}/admin/refreshToken`
+        : `${API}/users/refreshToken`;
 
       await axios.post(refreshUrl, {}, { withCredentials: true });
 
@@ -66,5 +68,5 @@ axiosInstance.interceptors.response.use(
       isRefreshing = false;
       return Promise.reject(refreshError);
     }
-  },
+  }
 );
