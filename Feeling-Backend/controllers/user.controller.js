@@ -4,8 +4,6 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { APiResponse } from "../utils/apiResponse.js";
 import jwt from "jsonwebtoken";
 import { cloudinary } from "../utils/cloudinary.js";
-import axios from "axios";
-import fs from "fs";
 import conversationModel from "../models/conversation.model.js";
 import messageModel from "../models/message.model.js";
 import { OAuth2Client } from "google-auth-library";
@@ -425,17 +423,9 @@ const googleLoginUser = asyncHandler(async (req, res) => {
         counter++;
       }
 
-      const response = await axios({
-        url: picture,
-        responseType: "arraybuffer",
+      const uploadedAvatar = await cloudinary.uploader.upload(picture, {
+        folder: "users",
       });
-
-      const tempPath = `./public/temp-${Date.now()}.jpg`;
-      fs.writeFileSync(tempPath, response.data);
-
-      const uploadedAvatar = await uploadOnCloudinary(tempPath);
-
-      fs.unlinkSync(tempPath);
 
       user = await User.create({
         username,
