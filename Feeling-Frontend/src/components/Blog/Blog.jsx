@@ -64,7 +64,7 @@ function Blog() {
   return (
     <>
       {/* HERO */}
-      <div className="relative h-screen 2xl:h-[110vh]">
+      <div className="relative custom-xsm:h-[80vh] 2xl:h-[110vh]">
         {/* NAV */}
         <div className="absolute top-0 left-0 w-full z-50">
           <Nav />

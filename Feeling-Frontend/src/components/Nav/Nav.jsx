@@ -501,7 +501,7 @@ function Nav() {
 
       {/* Mobile Menu */}
       <ul
-        className={`fixed inset-0 z-[40] flex flex-col items-center justify-center cinzel text-2xl gap-8 transition-all duration-500 ease-in-out lg:hidden
+        className={`fixed inset-0 z-[40] custom-xsm:-mt- flex flex-col items-center justify-center cinzel text-2xl custom-xsm:gap-16 transition-all duration-500 ease-in-out lg:hidden
         ${isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"} lg:hidden overflow-hidden bg-[#11120D] touch-none`}
       >
         <div className="relative z-20 flex items-center justify-center px-6 py-5 border-b border-white/20 w-full">
@@ -509,7 +509,7 @@ function Nav() {
             <div className="flex flex-col items-center gap-3">
               <img
                 src={currentUser?.avatar || "/default-avatar.png"}
-                alt="User Avatar"
+                alt="User Avatar" 
                 referrerPolicy="no-referrer"
                 crossOrigin="anonymous"
                 onError={(e) => {
@@ -562,7 +562,7 @@ function Nav() {
         />
 
         {/* li */}
-        <div className="relative z-20 flex flex-col items-center gap-8">
+        <div className="relative z-20 flex flex-col items-center gap-12">
           {mobileMenuItems.map((item, index) => {
             const number = String(index + 1).padStart(2, "0");
             const isActive = location.pathname === item.path;
