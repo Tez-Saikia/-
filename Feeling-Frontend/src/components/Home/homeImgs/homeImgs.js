@@ -12,10 +12,10 @@ import secondSecImg3 from "./secondSect3.png";
 
 import Section3_mainImg from "./Section3_mainImg.png";
 
-import Sec4_1 from "./sec4_1st_Img.png";
-import Sec4_2 from "./sec4_2nd_Img.png";
-import Sec4_3 from "./sec4_3rd_Img.png";
-import Sec4_4 from "./sec4_4th_Img.png";
+import Sec4_1 from "./Sec4_1st_Img.png";
+import Sec4_2 from "./Sec4_2nd_Img.png";
+import Sec4_3 from "./Sec4_3rd_Img.png";
+import Sec4_4 from "./Sec4_4th_Img.png";
 
 export const homeImgs = {
   LOGO,
